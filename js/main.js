@@ -72,6 +72,7 @@ const app = new Vue({
 //         this.allProducts = [];
 //         this.filtered = [];
 //         this._init();
+//         this
 //     }
 //     getJson(url){
 //         return fetch(url ? url : `${API + this.url}`)
