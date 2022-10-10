@@ -18,7 +18,8 @@
                 </button>
             </form>
             <button class="btn-cart" type="button" @click="cartVisible">Корзина</button>
-            <div class="cart-block">
+            <div class="cart-block" v-bind:class="{ hidden: !show }">
+                <h3 v-bind:class="{ hidden: !emptyCart }">Корзина пуста</h3>
                 <div v-for="product of cart" class="cartProduct">
                     <img :src="imgCatalog" alt="Some img" class="cartProductImg">
                     <div class="cartProductInfo">
@@ -26,7 +27,7 @@
                         <p>{{product.price}} $</p>
                         <p>Кол-во: {{product.quantity}}</p>
                     </div>
-                    <button class="buy-btn" @click="removeProduct(product)">X</button>
+                    <button class="buy-btn" @click="removeProduct(product), cartEmpty()">X</button>
                 </div>
             </div>
         </div>
@@ -38,7 +39,7 @@
                 <div class="desc">
                     <h3>{{product.product_name}}</h3>
                     <p>{{product.price}} $</p>
-                    <button class="buy-btn" @click="addProduct(product)">Купить</button>
+                    <button class="buy-btn" @click="addProduct(product), cartEmpty()">Купить</button>
                 </div>
             </div>
         </div>

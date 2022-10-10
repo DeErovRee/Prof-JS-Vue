@@ -9,7 +9,8 @@ const app = new Vue({
         cart: [],
         imgCatalog: 'https://via.placeholder.com/200x150',
         userSearch: '',
-        show: false
+        show: false,
+        emptyCart: true,
     },
     methods: {
         filter(){
@@ -42,7 +43,20 @@ const app = new Vue({
             }
         },
         cartVisible() {
-            console.log('re')
+            if (this.show === false) {
+                this.show = true;
+            } else {
+                this.show = false;
+            }
+        },
+        cartEmpty() {
+            if (this.cart.length < 1) {
+                this.emptyCart = true;
+                console.log(this.emptyCart)
+            } else {
+                this.emptyCart = false;
+                console.log(this.emptyCart)
+            }
         }
     },
     mounted(){
