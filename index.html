@@ -11,12 +11,7 @@
     <header>
         <div class="logo">E-shop</div>
         <div class="cart">
-            <form action="#" class="search-form">
-                <input type="text" class="search-field" v-model="userSearch" @input="filter">
-                <button class="btn-search" type="submit">
-                    <i class="fas fa-search"></i>
-                </button>
-            </form>
+            <searchline></searchline>
             <button class="btn-cart" type="button" @click="cartVisible">Корзина</button>
             <div class="cart-block" v-bind:class="{ hidden: !show }">
                 <h3 v-bind:class="{ hidden: !emptyCart }">Корзина пуста</h3>
@@ -33,7 +28,8 @@
         </div>
     </header>
     <main>
-        <div class="products">
+        <products :products="filtered" :img="imgCatalog" @add-product="addProduct" @cart-empty="cartEmpty"></products>
+        <!-- <div class="products">
             <div class="product-item" v-for="product of filtered" :key="product.id_product">
                 <img :src="imgCatalog" alt="Some img">
                 <div class="desc">
@@ -42,12 +38,15 @@
                     <button class="buy-btn" @click="addProduct(product), cartEmpty()">Купить</button>
                 </div>
             </div>
-        </div>
+        </div> -->
     </main>
 </div>
     <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="js/searchComponent.js"></script>
+    <script src="js/productComponent.js"></script>
     <script src="js/main.js"></script>
+    
 </body>
 </html>
 
