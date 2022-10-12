@@ -11,6 +11,7 @@ const app = new Vue({
         userSearch: '',
         show: false,
         emptyCart: true,
+        error: false,
     },
     methods: {
         filter(){
@@ -21,7 +22,7 @@ const app = new Vue({
             return fetch(url)
                 .then(result => result.json())
                 .catch(error => {
-                    console.log(error);
+                    this.error = true;
                 })
         },
         addProduct(product){
